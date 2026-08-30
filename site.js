@@ -52,7 +52,29 @@
         heading: '聊聊吧。',
         text: '聊聊 AI、内容，或者一起把一个想法落成事情。',
         repo: 'Skill 仓库 →',
+        wechat: '扫码添加 →',
         top: '回到顶部 ↑'
+      },
+      wechat: {
+        meta: {
+          title: '微信联系｜Kai炌',
+          description: '扫描微信二维码，添加 Kai炌 为好友。',
+          socialTitle: '微信联系｜Kai炌',
+          socialDescription: '扫描微信二维码，添加 Kai炌 为好友。'
+        },
+        navBack: '返回主页',
+        kicker: 'WECHAT / CONTACT',
+        heading: '加个微信，继续聊。',
+        lead: '扫描二维码添加我为好友，聊聊 AI、内容创作和正在落地的想法。',
+        noteLabel1: '适合交流',
+        noteText1: 'AI Coding · Agent · 内容实践',
+        noteLabel2: '添加备注',
+        noteText2: '来自个人网站',
+        back: '← 返回联系方式',
+        cardLabel: '个人微信',
+        imageAction: '打开原尺寸微信二维码',
+        imageAlt: 'Kai炌的个人微信二维码',
+        caption: '微信扫一扫，添加我为好友'
       }
     },
     en: {
@@ -107,7 +129,29 @@
         heading: 'Let’s talk.',
         text: 'Let’s talk about AI and content—or turn an idea into something real together.',
         repo: 'Skill repo →',
+        wechat: 'Scan to connect →',
         top: 'Back to top ↑'
+      },
+      wechat: {
+        meta: {
+          title: 'WeChat contact | Kai炌',
+          description: 'Scan the WeChat QR code to connect with Kai炌.',
+          socialTitle: 'WeChat contact | Kai炌',
+          socialDescription: 'Scan the WeChat QR code to connect with Kai炌.'
+        },
+        navBack: 'BACK HOME',
+        kicker: 'WECHAT / CONTACT',
+        heading: 'Let’s keep talking on WeChat.',
+        lead: 'Scan the QR code to connect and talk about AI, content, and ideas worth building.',
+        noteLabel1: 'Good for',
+        noteText1: 'AI Coding · Agents · Content practice',
+        noteLabel2: 'Add a note',
+        noteText2: 'From your personal website',
+        back: '← Back to contact options',
+        cardLabel: 'PERSONAL WECHAT',
+        imageAction: 'Open the full-size WeChat QR code',
+        imageAlt: 'Kai炌 personal WeChat QR code',
+        caption: 'Scan in WeChat to add me'
       }
     }
   };
@@ -125,10 +169,11 @@
   const applyLocale = (locale, announce = false) => {
     const activeLocale = locale === 'en' ? 'en' : 'zh';
     const copy = COPY[activeLocale];
+    const metaCopy = document.body.dataset.page === 'wechat' ? copy.wechat.meta : copy.meta;
 
     document.documentElement.lang = activeLocale === 'en' ? 'en' : 'zh-CN';
     document.documentElement.dataset.locale = activeLocale;
-    document.title = copy.meta.title;
+    document.title = metaCopy.title;
 
     document.querySelectorAll('[data-i18n]').forEach((node) => {
       const value = getValue(copy, node.dataset.i18n);
@@ -143,11 +188,11 @@
       if (typeof value === 'string') node.setAttribute('alt', value);
     });
 
-    updateMeta('meta[name="description"]', copy.meta.description);
-    updateMeta('meta[property="og:title"]', copy.meta.socialTitle);
-    updateMeta('meta[property="og:description"]', copy.meta.socialDescription);
-    updateMeta('meta[name="twitter:title"]', copy.meta.socialTitle);
-    updateMeta('meta[name="twitter:description"]', copy.meta.socialDescription);
+    updateMeta('meta[name="description"]', metaCopy.description);
+    updateMeta('meta[property="og:title"]', metaCopy.socialTitle);
+    updateMeta('meta[property="og:description"]', metaCopy.socialDescription);
+    updateMeta('meta[name="twitter:title"]', metaCopy.socialTitle);
+    updateMeta('meta[name="twitter:description"]', metaCopy.socialDescription);
 
     if (toggle) {
       toggle.dataset.locale = activeLocale;

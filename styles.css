@@ -326,14 +326,67 @@ button { font: inherit; }
 .contact > p { margin: 22px auto 52px; max-width: 520px; }
 .contactGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.contactGrid a { min-height: 84px; display: grid; place-items: center; border-left: 1px solid var(--line); color: var(--muted); }
+.contactGrid a { min-height: 84px; display: grid; place-items: center; border-left: 1px solid var(--line); color: var(--muted); transition: background-color .2s ease, color .2s ease; }
 .contactGrid a:first-child { border-left: 0; }
+.contactGrid a:hover { background: rgba(243, 239, 229, .06); color: var(--ink); }
 .contactGrid span { display: block; color: var(--ink); font-weight: 700; margin-bottom: 4px; }
 .contactGrid b { color: var(--muted); font-weight: 400; }
+
+.wechatPage { min-height: 100vh; }
+.wechatPage main { min-height: 100vh; }
+.wechatHero {
+  position: relative;
+  min-height: calc(100vh - 134px);
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(420px, 1.12fr);
+  gap: clamp(48px, 7vw, 110px);
+  align-items: center;
+  padding: 72px clamp(32px, 5vw, 78px);
+  border-bottom: 1px solid var(--line);
+}
+.wechatHero::before {
+  content: '+';
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  color: rgba(243, 239, 229, .35);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.wechatCopy h1 {
+  max-width: 720px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", "Songti SC", serif;
+  font-size: clamp(66px, 7.2vw, 114px);
+  line-height: .96;
+  letter-spacing: -.04em;
+  font-weight: 600;
+}
+.wechatLead { max-width: 590px; margin: 28px 0 0; color: var(--muted); font-size: 18px; line-height: 1.8; }
+.wechatDetails { max-width: 590px; margin: 36px 0; border-top: 1px solid var(--line); }
+.wechatDetails > div { display: grid; grid-template-columns: 110px 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.wechatDetails span { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.wechatDetails strong { font-size: 13px; font-weight: 600; }
+.wechatBack { display: inline-flex; padding: 12px 18px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 700; transition: border-color .2s ease, color .2s ease, background-color .2s ease; }
+.wechatBack:hover { border-color: var(--orange); color: var(--ink); background: rgba(243, 239, 229, .06); }
+.wechatQrCard {
+  width: min(100%, 520px);
+  margin: 0;
+  padding: 22px;
+  justify-self: end;
+  color: #10100e;
+  background: var(--paper-2);
+  border: 1px solid rgba(243, 239, 229, .5);
+  box-shadow: 20px 20px 0 rgba(10, 25, 52, .28);
+}
+.wechatQrMeta { min-height: 46px; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 0 4px; color: #666257; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: .08em; }
+.wechatQrMeta b { color: #10100e; font-size: 13px; }
+.wechatQrLink { display: block; padding: 8px; background: white; border: 1px solid rgba(16, 16, 14, .18); }
+.wechatQrLink img { display: block; width: 100%; height: auto; }
+.wechatQrCard figcaption { padding: 18px 4px 2px; color: #666257; text-align: center; font-size: 13px; letter-spacing: .03em; }
 .footer {
   min-height: 72px;
   display: flex;
@@ -354,6 +407,9 @@ button { font: inherit; }
   .panel { padding: 70px 22px; }
   .identityCard { grid-template-columns: 1fr; }
   .avatarSketch { min-height: 480px; }
+  .wechatHero { grid-template-columns: 1fr; min-height: auto; padding: 64px 24px 82px; }
+  .wechatCopy { max-width: 700px; }
+  .wechatQrCard { justify-self: center; }
 }
 
 @media (max-width: 640px) {
@@ -376,6 +432,11 @@ button { font: inherit; }
   .contactGrid a { border-left: 0; border-top: 1px solid var(--line); }
   .contactGrid a:first-child { border-top: 0; }
   .footer { display: grid; gap: 8px; padding: 22px 0; }
+  .wechatHero { padding: 52px 20px 68px; gap: 48px; }
+  .wechatCopy h1 { font-size: clamp(54px, 17vw, 76px); }
+  .wechatLead { font-size: 16px; }
+  .wechatDetails > div { grid-template-columns: 1fr; gap: 6px; }
+  .wechatQrCard { padding: 12px; box-shadow: 12px 12px 0 rgba(10, 25, 52, .28); }
 }
 
 @media (prefers-reduced-motion: reduce) {
