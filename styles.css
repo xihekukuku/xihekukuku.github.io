@@ -182,32 +182,6 @@ button { font: inherit; }
     drop-shadow(0 0 7px rgba(0, 212, 255, .45))
     drop-shadow(22px 26px 30px rgba(7, 15, 31, .42));
 }
-.blueprint {
-  position: absolute;
-  z-index: 1;
-  right: 1%;
-  top: 9%;
-  width: 64%;
-  height: 205px;
-  border: 0;
-  background: transparent;
-}
-.blueprint::before {
-  content: none;
-}
-.blueprint span {
-  position: absolute;
-  padding: 6px 12px;
-  border: 1px solid rgba(37, 99, 235, .36);
-  color: var(--blue);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
-  background: rgba(243, 239, 229, .9);
-}
-.blueprint span:nth-child(1) { left: 24px; top: 24px; }
-.blueprint span:nth-child(2) { right: 34px; top: 64px; background: var(--blue); color: white; }
-.blueprint span:nth-child(3) { right: 28px; bottom: 20px; }
-
 .panel {
   position: relative;
   min-height: 650px;
@@ -392,7 +366,6 @@ button { font: inherit; }
   .heroActions a { width: 100%; }
   .heroArt { right: -24%; width: 122%; height: 48%; min-height: 535px; }
   .heroArt img { transform: scale(1.03) translate(2%, -1%); }
-  .blueprint { width: 250px; height: 150px; right: 2%; top: 8%; }
   .navTools { gap: 8px; }
   .signal { display: none; }
   .langToggle { min-width: 68px; }
