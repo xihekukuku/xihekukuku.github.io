@@ -443,3 +443,6 @@ button { font: inherit; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; }
 }
+
+/* Keep the character card background free of crosshair lines. */
+.avatarSketch { background: rgba(255,255,255,.23); }
